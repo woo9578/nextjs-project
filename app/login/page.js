@@ -1,11 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import {signIn} from "next-auth/react"
+import { useEffect, useState } from "react";
+import {signIn,useSession } from "next-auth/react"
 import { useRouter } from "next/navigation";
+import {toast} from "react-toastify";
+import Image from "next/image";
 
 const Login = () => {
   const router = useRouter();
+  const { data: session, status: sessionStatus } = useSession();
   const [user, setUser] = useState({email:"",password:""})
   const onChange = ({target:{name,value}})=>{
       setUser({...user,[name]:value})
@@ -24,14 +27,28 @@ const Login = () => {
     }).then((result)=>{
       console.log(result);
       if(result?.ok) router.push("/");
-      if(result?.error) console.log(result?.error);
+      if(result?.error) console.log(result?.error); toast.error(result?.error);
     });
   };
+
+  useEffect(()=>{
+    if(sessionStatus === "authenticated"){
+      router.push("/");
+    }
+  },[sessionStatus,router]);
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 bg-white rounded-md shadow-md lg:max-w-xl">
-        <h1 className="text-3xl font-bold text-center text-gray-700">Logo</h1>
+        <h1 className="flex text-3xl font-bold text-center text-gray-700 justify-center">
+          <Image
+            src="/smartcastLogo.svg"
+            alt="smartcast"
+            width={100}
+            height={50}
+            priority={true}
+          />
+        </h1>
         <form className="mt-6" onSubmit={login}>
           <div className="mb-4">
             <label
@@ -47,6 +64,7 @@ const Login = () => {
               value={user.email}
               onChange={onChange}
               required
+              autoComplete="off"
             />
           </div>
           <div className="mb-2">
@@ -63,6 +81,7 @@ const Login = () => {
               value={user.password}
               onChange={onChange}
               required
+              autoComplete="off"
             />
           </div>
           <Link

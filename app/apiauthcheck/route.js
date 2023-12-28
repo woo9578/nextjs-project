@@ -15,6 +15,7 @@ export async function POST(req) {
     // Respond with the data
     // return null
     if (await bcrypt.compare(requestBody.password, data.USER_PS)){
+      delete data?.USER_PS;
       return NextResponse.json({ data: data }, { status: 200 });
     }else{
       return NextResponse.json({ error: "아이디 혹은 패스워드가 틀렸습니다." },{ status: 500 });  

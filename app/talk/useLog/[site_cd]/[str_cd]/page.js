@@ -22,7 +22,6 @@ import {
 } from "@nextui-org/react";
 import { useAsyncList } from "@react-stately/data";
 import { useMemo, useState } from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
 
 
 export default function TalkUseLog(props) {
