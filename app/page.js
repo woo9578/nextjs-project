@@ -1,9 +1,20 @@
 // import {} from "next-auth/client"
+import { getServerSession } from "next-auth";
+import SideMenuLayout from "@/components/SideMenuLayout";
+import { useSelectedLayoutSegment, redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession();
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <>
-    Hellos
+      <SideMenuLayout />
+      <div className="p-4 sm:ml-64">
+        Hello
+      </div>
     </>
-  )
+  );
 }

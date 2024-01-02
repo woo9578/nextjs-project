@@ -24,19 +24,19 @@ export default function SideMenuLayout(props) {
   const menuItems = [
     {
       name: "메세지 발송 이력",
-      href: `/talk/useLog/${session?.user.site_cd}/${session?.user.str_cd}`,
+      href: `/talk/useLog`,
       key: "useLog",
     },
     {
       name: "결제 내역",
-      href: `/talk/payLog/${session?.user.site_cd}/${session?.user.str_cd}`,
+      href: `/talk/payLog`,
       key: "payLog",
     },
   ];
 
   useEffect(()=>{
     if(session?.user === null){
-      alert('세션이 만료되었스니다');
+      alert('세션이 만료되었습니다');
       signOut({redirect: true});
     }
   },[session]);
@@ -57,7 +57,7 @@ export default function SideMenuLayout(props) {
         <NavbarContent className="sm:hidden" justify="center">
           <NavbarBrand>
             <Image
-              src="/smartcastLogo.svg"
+              src="/smartcastLogo.png"
               alt="smartcast"
               width={100}
               height={24}
@@ -98,7 +98,7 @@ export default function SideMenuLayout(props) {
       >
         <div className="px-1 py-4 justify-center flex">
           <Image
-            src="/smartcastLogo.svg"
+            src="/smartcastLogo.png"
             alt="smartcast"
             width={100}
             height={24}

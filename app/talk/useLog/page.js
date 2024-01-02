@@ -22,10 +22,10 @@ import {
 } from "@nextui-org/react";
 import { useAsyncList } from "@react-stately/data";
 import { useMemo, useState } from "react";
-
+import DateFormat from "@/common/DateFormat"
 
 export default function TalkUseLog(props) {
-    const localDate = new Date().toLocaleDateString().replace(/\./g, '').replace(/\s/g, '-');
+    const localDate = DateFormat;
     const [isLoading, setIsLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [pages, setPages] = useState(1);
