@@ -23,6 +23,11 @@ export default function SideMenuLayout(props) {
   const pathname = useSelectedLayoutSegments();
   const menuItems = [
     {
+      name: "충전",
+      href: `/talk/pay`,
+      key: "pay",
+    },
+    {
       name: "메세지 발송 이력",
       href: `/talk/useLog`,
       key: "useLog",
@@ -67,9 +72,12 @@ export default function SideMenuLayout(props) {
         </NavbarContent>
         <NavbarContent className="sm:hidden" justify="end"></NavbarContent>
         <NavbarMenu>
-          <NavbarMenuItem className="text-right">
-            <span>{session?.user.site_cd | session?.user.str_cd}</span>
-            <Button variant="light" onClick={() => signOut()}>
+          <NavbarMenuItem>
+            <div className="flex flex-col text-sm float-left">
+              <span> 브랜드 코드: {session?.user.site_cd} </span>
+              <span> 가맹점 코드: {session?.user.str_cd} </span>
+            </div>
+            <Button className="float-right" variant="light" onClick={() => signOut()}>
               {" "}
               sgin out
             </Button>
@@ -108,9 +116,10 @@ export default function SideMenuLayout(props) {
         <div className="h-full flex ml-3 px-1 py-4 overflow-y-auto dark:bg-gray-800">
           <div className="flex flex-col w-full">
             <div className="flex justify-between">
-              <span>
-                {session?.user.site_cd} | {session?.user.str_cd}
-              </span>
+              <div className="flex flex-col text-sm">
+                <span> 브랜드 코드: {session?.user.site_cd} </span>
+                <span> 가맹점 코드: {session?.user.str_cd} </span>
+              </div>
               <button
                 className="primary-700 pr-4 pb-4 my-auto"
                 onClick={() => signOut()}

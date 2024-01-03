@@ -154,11 +154,22 @@ export default function PayLog(props) {
           <TableColumn className="items-center" key="amt" allowsSorting>
             금액
           </TableColumn>
-          <TableColumn className="hidden sm:table-cell items-center" key="result_msg" allowsSorting>
+          <TableColumn
+            className="hidden sm:table-cell items-center"
+            key="result_msg"
+            allowsSorting
+          >
             결제 메세지
           </TableColumn>
           <TableColumn key="result_code" allowsSorting>
             성공 결과
+          </TableColumn>
+          <TableColumn
+            className="hidden sm:table-cell items-center"
+            key="result_code"
+            allowsSorting
+          >
+            취소 요청
           </TableColumn>
         </TableHeader>
         <TableBody
