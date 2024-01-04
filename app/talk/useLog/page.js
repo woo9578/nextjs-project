@@ -23,6 +23,7 @@ import {
 import { useAsyncList } from "@react-stately/data";
 import { useMemo, useState } from "react";
 import DateFormat from "@/common/DateFormat"
+import { FiSearch } from "react-icons/fi";
 
 export default function TalkUseLog(props) {
     const localDate = DateFormat;
@@ -103,6 +104,7 @@ export default function TalkUseLog(props) {
           label="시작 날짜"
           name="st_date"
           value={selectDate.st_date}
+          max={selectDate.end_date}
           onChange={onChange}
         />
         <span className="text-2xl my-auto">~</span>
@@ -111,16 +113,17 @@ export default function TalkUseLog(props) {
           type="date"
           label="조회 날짜"
           name="end_date"
+          min={selectDate.st_date}
+          max={selectDate.end_date}
           value={selectDate.end_date}
           onChange={onChange}
         />
-        <Button
-          className="my-auto"
-          color="primary"
+        <button
+          className="ml-4 my-auto bg-white border border-[#aaa] w-[50px] h-[40px] rounded-md"
           onClick={onSelectReloadClick}
         >
-          조회
-        </Button>
+          <FiSearch size={20} className="mx-auto" />
+        </button>
       </div>
       <Table
         aria-label="Example table with client side sorting pagination"
@@ -177,8 +180,7 @@ export default function TalkUseLog(props) {
           emptyContent={
             !isLoading ? (
               <div>
-                {selectDate.st_date} ~ {selectDate.end_date} 사이에 발송된
-                내용이 없습니다.
+                조회된 알림톡 발송내역이 없습니다.
               </div>
             ) : null
           }

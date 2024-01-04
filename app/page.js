@@ -13,7 +13,7 @@ export default async function Home() {
     <>
       <SideMenuLayout />
       <div className="p-4 sm:ml-64">
-        Hello
+         <div className="flex justify-center">알림톡 관리 페이지</div>
       </div>
     </>
   );

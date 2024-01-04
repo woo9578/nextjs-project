@@ -23,6 +23,7 @@ import {
 import { useAsyncList } from "@react-stately/data";
 import { useMemo, useState } from "react";
 import DateFormat from "@/common/DateFormat";
+import { FiSearch } from "react-icons/fi";
 
 export default function PayLog(props) {
   const localDate = DateFormat;
@@ -111,13 +112,12 @@ export default function PayLog(props) {
           value={selectDate.end_date}
           onChange={onChange}
         />
-        <Button
-          className="my-auto"
-          color="primary"
+        <button
+          className="ml-4 my-auto bg-white border border-[#aaa] w-[50px] h-[40px] rounded-md"
           onClick={onSelectReloadClick}
         >
-          조회
-        </Button>
+          <FiSearch size={20} className="mx-auto" />
+        </button>
       </div>
       <Table
         aria-label="Example table with client side sorting pagination"
@@ -166,7 +166,7 @@ export default function PayLog(props) {
           </TableColumn>
           <TableColumn
             className="hidden sm:table-cell items-center"
-            key="result_code"
+            key="cancel"
             allowsSorting
           >
             취소 요청
@@ -177,12 +177,7 @@ export default function PayLog(props) {
           isLoading={isLoading}
           loadingContent={<Spinner label="Loading..." />}
           emptyContent={
-            !isLoading ? (
-              <div>
-                {selectDate.st_date} ~ {selectDate.end_date} 사이에 결제된
-                내역이 없습니다.
-              </div>
-            ) : null
+            !isLoading ? <div>조회된 충전내역이 없습니다.</div> : null
           }
         >
           {(item, index) => (
@@ -222,6 +217,8 @@ export default function PayLog(props) {
                 <span>{details.result_code}</span>
                 <Divider />
                 <p className="text-tiny font-bold">결제 메세지</p>
+                <span>{details.result_msg}</span>
+                <p className="text-tiny font-bold">취소 요청</p>
                 <span>{details.result_msg}</span>
               </ModalBody>
               <ModalFooter></ModalFooter>

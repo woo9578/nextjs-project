@@ -42,7 +42,7 @@ const Login = () => {
       <div className="w-full p-6 bg-white rounded-md shadow-md lg:max-w-xl">
         <h1 className="flex text-3xl font-bold text-center text-gray-700 justify-center">
           <Image
-            src="/smartcastLogo.svg"
+            src="/smartcastLogo.png"
             alt="smartcast"
             width={100}
             height={50}

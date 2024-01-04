@@ -28,15 +28,15 @@ export default function SideMenuLayout(props) {
       key: "pay",
     },
     {
-      name: "메세지 발송 이력",
-      href: `/talk/useLog`,
-      key: "useLog",
-    },
-    {
-      name: "결제 내역",
+      name: "충전 내역",
       href: `/talk/payLog`,
       key: "payLog",
     },
+    {
+      name: "메세지 발송 이력",
+      href: `/talk/useLog`,
+      key: "useLog",
+    }
   ];
 
   useEffect(()=>{

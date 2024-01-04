@@ -33,13 +33,13 @@ export default function About(props) {
     {name:"+100만", amt: 1000000}
   ]);
   const [messageType, setMessageType] = useState([
-    {name:" SMS ", num:0},
-    {name:" LMS ", num:0},
-    {name:" MMS ", num:0},
-    {name:" 알림톡 텍스트 ", num:0},
-    {name:" 알림톡 이미지 ", num:0},
-    {name:" 친구톡 텍스트 ", num:0},
-    {name:" 친구톡 이미지 ", num:0}
+    { name: " SMS ", num: 0, fee: 24 },
+    { name: " LMS ", num: 0, fee: 39 },
+    { name: " MMS ", num: 0, fee: 115 },
+    { name: " 알림톡 텍스트 ", num: 0, fee: 18 },
+    { name: " 알림톡 이미지 ", num: 0, fee: 20 },
+    { name: " 친구톡 텍스트 ", num: 0, fee: 25 },
+    { name: " 친구톡 이미지 ", num: 0, fee: 36 },
   ]);
 
   // useEffect(()=>{
@@ -67,7 +67,7 @@ export default function About(props) {
         orderId: "6f448dbb-a7ec-42e1-a261-947371030ee1",
         amount: amt.amt,
         goodsName: "나이스페이-상품",
-        returnUrl: `http://localhost:3000/pay/${props.params.site_cd}/${props.params.str_cd}`, //API를 호출할 Endpoint 입력
+        returnUrl: `http://localhost:3000/pay`, //API를 호출할 Endpoint 입력
         fnError: function (result) {
           alert("개발자확인용 : " + result.errorMsg + "");
         },
@@ -88,7 +88,6 @@ export default function About(props) {
 
   const payWayChange = (chkey, getkey)=> {
     const payArray = [...usePayWay];
-    console.log(chkey, getkey);
     if (!payArray[chkey].isActive) {
       payArray[chkey].isActive = !usePayWay[chkey].isActive;
       payArray[getkey].isActive = !usePayWay[getkey].isActive;
@@ -190,7 +189,7 @@ export default function About(props) {
           {messageType?.map((msg, i) => (
             <span key={i}>
               {msg.name}
-              <span className="text-[#ff4242]">{msg.num}</span>건
+              <span className="text-[#ff4242]">{Math.floor(amt.amt/msg.fee)}</span>건
               {messageType.length - 1 != i ? "/" : ""}
             </span>
           ))}
