@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, ButtonGroup } from "@nextui-org/react";
+import { Accordion, AccordionItem, Button, ButtonGroup } from "@nextui-org/react";
 import crypto from "crypto";
 import { useState, useEffect } from "react";
 import { TbPigMoney } from "react-icons/tb";
@@ -178,6 +178,33 @@ export default function About(props) {
             ))}
           </div>
         </div>
+        <Accordion className="px-0">
+          <AccordionItem
+            aria-label="환불 정책"
+            title={<span className="text-foreground text-sm">환불정책</span>}
+            className="text-sm"
+          >
+            <div>
+              ■ 무통장입금 또는 신용카드로 결제된 충전금에 한해서 환불됩니다.
+              <br />
+              ■ 사용 내역이 없는 결제 건에 대해서만 전액 환불이 가능합니다.
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;(단, 결제 후 10일 이내 사용 이력이 없는
+              경우에만 전액 환불 가능합니다)
+              <br />
+              ■ 사용 내역이 있는 결제 건에 대해서는 기획재정부에서 고시한
+              &lt;인터넷이용관련 소비자피해보상&gt;에따라 위약금 (최종 결제
+              요금의 10%) 및 PG수수료(무통장입금 200원 / 신용카드 결제 금액의
+              2.35%) 공제 후 환불됩니다. 단, 남은 금액이 공제 금액보다 작은
+              경우에는 환불이 불가합니다.
+              <br />
+              ■ 아래의 경우 충전금은 환불되지 않습니다.
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 충전금 잔액이1,000원 미만인
+              경우
+            </div>
+          </AccordionItem>
+        </Accordion>
         <p className="text-sm font-normal leading-8">
           결제가 안되시나요?{" "}
           <a href="#" className="underline text-[#4b70fd]">
@@ -189,8 +216,10 @@ export default function About(props) {
           {messageType?.map((msg, i) => (
             <span key={i}>
               {msg.name}
-              <span className="text-[#ff4242]">{Math.floor(amt.amt/msg.fee)}</span>건
-              {messageType.length - 1 != i ? "/" : ""}
+              <span className="text-[#ff4242]">
+                {Math.floor(amt.amt / msg.fee)}
+              </span>
+              건{messageType.length - 1 != i ? "/" : ""}
             </span>
           ))}
         </p>
