@@ -16,7 +16,6 @@ const Login = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    console.log("log");
     // console.log(user.email);
     // console.log(user.password);
     await signIn("email-password-credential", {
