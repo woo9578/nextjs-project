@@ -102,7 +102,7 @@ export default function About(props) {
   };
 
   return (
-    <div className="flex flex-col justify-start h-screen basis-1/4 mx-4 divide-y">
+    <div className="flex flex-col justify-start basis-1/4 mx-2 divide-y">
       <div className="mb-4">
         {/* <div className="flex justify-between mb-4"> */}
         {/* <span>{user.str_nm ?? ""} 지점</span> */}

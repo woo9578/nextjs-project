@@ -97,7 +97,12 @@ export default function TalkUseLog(props) {
 
   return (
     <>
-      <div className="flex mb-4">
+      <div className="pb-4 border-b mx-2">
+        <span className="text-2xl font-sans bolod font-bold">
+          알림톡 발송 내역
+        </span>
+      </div>
+      <div className="flex mb-4 mx-2 mt-7">
         <Input
           className="flex-initial w-64"
           type="date"
@@ -145,6 +150,7 @@ export default function TalkUseLog(props) {
         classNames={{
           table: "min-h-[222px]",
         }}
+        className="px-2"
       >
         <TableHeader>
           <TableColumn key="type" allowsSorting maxWidth={"10%"}>
@@ -178,11 +184,7 @@ export default function TalkUseLog(props) {
           isLoading={isLoading}
           loadingContent={<Spinner label="Loading..." />}
           emptyContent={
-            !isLoading ? (
-              <div>
-                조회된 알림톡 발송내역이 없습니다.
-              </div>
-            ) : null
+            !isLoading ? <div>조회된 알림톡 발송내역이 없습니다.</div> : null
           }
         >
           {(item, index) => (

@@ -33,7 +33,7 @@ export default function SideMenuLayout(props) {
       key: "payLog",
     },
     {
-      name: "메세지 발송 이력",
+      name: "알림톡 발송 이력",
       href: `/talk/useLog`,
       key: "useLog",
     }

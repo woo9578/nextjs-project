@@ -94,7 +94,12 @@ export default function PayLog(props) {
 
   return (
     <>
-      <div className="flex mb-4">
+      <div className="pb-4 border-b mx-2">
+        <span className="text-2xl font-sans bolod font-bold">
+          충전 내역
+        </span>
+      </div>
+      <div className="flex mb-4 mx-2 mt-7">
         <Input
           className="flex-initial w-64"
           type="date"
@@ -139,6 +144,7 @@ export default function PayLog(props) {
         classNames={{
           table: "min-h-[222px]",
         }}
+        className="px-2"
       >
         <TableHeader>
           <TableColumn key="auth_date" allowsSorting>
