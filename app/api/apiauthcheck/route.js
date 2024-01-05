@@ -1,7 +1,7 @@
 "use server"
 
 import { NextResponse } from "next/server";
-import { executeQuery } from "../lib/db";
+import { executeQuery } from "../../lib/db";
 import bcrypt from "bcrypt"
 
 export async function POST(req) {
@@ -9,7 +9,7 @@ export async function POST(req) {
     // Access the request body
     const requestBody = await req.json();
     // Your logic here, for example, executing a SQL query
-    const sql = `select * from user_m where USER_CD = 'smartcast' limit 1`;
+    const sql = `select u.*, s.amount from user_m as u LEFT JOIN store_atalk_pay AS s ON u.site_cd = s.site_cd AND u.str_cd = s.str_cd where USER_CD = 'smartcast' limit 1`;
     const [data] = await executeQuery(sql);
 
     // Respond with the data

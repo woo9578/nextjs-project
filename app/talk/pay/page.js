@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { useState, useEffect } from "react";
 import { TbPigMoney } from "react-icons/tb";
 import { MdCancel } from "react-icons/md";
-
+import { toast } from "react-toastify";
 
 export default function About(props) {
   const [user, setUser] = useState({});
@@ -26,11 +26,9 @@ export default function About(props) {
   ]);
   const [amt, setAmt] = useState({name:"0", amt:0});
   const [payAmts, setPayAmts] = useState([
+    {name:"+5천" ,  amt: 5000},
     {name:"+1만" ,  amt: 10000},
-    {name:"+5만" ,  amt: 50000},
-    {name:"+10만" , amt: 100000},
-    {name:"+50만" , amt: 500000},
-    {name:"+100만", amt: 1000000}
+    {name:"+5만" ,  amt: 50000}
   ]);
   const [messageType, setMessageType] = useState([
     { name: " SMS ", num: 0, fee: 24 },
@@ -96,13 +94,17 @@ export default function About(props) {
   }
 
   const amtChange = (value)=>{
-    amt.amt += value;
-    amt.name = amt.amt.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-    setAmt({...amt})
+    if (amt.amt + value <= 50000){ 
+      amt.amt += value;
+      amt.name = amt.amt.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+      setAmt({...amt})
+    }else{
+      toast.error("최대 결제 금액은 50000원 이하입니다.")
+    }
   };
 
   return (
-    <div className="flex flex-col justify-start basis-1/4 mx-2 divide-y">
+    <div className="flex flex-col justify-start basis-1/4 mx-2 divide-y mb-4">
       <div className="mb-4">
         {/* <div className="flex justify-between mb-4"> */}
         {/* <span>{user.str_nm ?? ""} 지점</span> */}
@@ -178,7 +180,7 @@ export default function About(props) {
             ))}
           </div>
         </div>
-        <Accordion className="px-0">
+        {/* <Accordion className="px-0">
           <AccordionItem
             aria-label="환불 정책"
             title={<span className="text-foreground text-sm">환불정책</span>}
@@ -204,7 +206,7 @@ export default function About(props) {
               경우
             </div>
           </AccordionItem>
-        </Accordion>
+        </Accordion> */}
         <p className="text-sm font-normal leading-8">
           결제가 안되시나요?{" "}
           <a href="#" className="underline text-[#4b70fd]">

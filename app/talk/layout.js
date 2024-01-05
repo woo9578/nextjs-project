@@ -1,7 +1,7 @@
 import SideMenuLayout from "@/components/SideMenuLayout";
 import { getServerSession } from "next-auth";
 import { useSelectedLayoutSegment, redirect } from "next/navigation";
-
+import Footer from "@/components/Footer";
 
 export default async function LogLayout({ children }) {
     const session = await getServerSession();
@@ -15,6 +15,7 @@ export default async function LogLayout({ children }) {
         <div className="p-4 sm:ml-64">
           {/* <div className="p-4"> */}
           {children}
+          <Footer />
         </div>
       </>
     );
