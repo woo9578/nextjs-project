@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { TbPigMoney } from "react-icons/tb";
 import { MdCancel } from "react-icons/md";
 import { toast } from "react-toastify";
+import Footer from "@/components/Footer";
 
 export default function About(props) {
   const [user, setUser] = useState({});
@@ -104,7 +105,7 @@ export default function About(props) {
   };
 
   return (
-    <div className="flex flex-col justify-start basis-1/4 mx-2 divide-y mb-4">
+    <><div className="flex flex-col justify-start basis-1/4 mx-2 divide-y mb-4">
       <div className="mb-4">
         {/* <div className="flex justify-between mb-4"> */}
         {/* <span>{user.str_nm ?? ""} 지점</span> */}
@@ -122,22 +123,18 @@ export default function About(props) {
         >
           <button
             type="button"
-            className={`px-4 py-2 text-sm font-medium border border-gray-900 rounded-s-lg ${
-              usePayWay[0].isActive
+            className={`px-4 py-2 text-sm font-medium border border-gray-900 rounded-s-lg ${usePayWay[0].isActive
                 ? "bg-gray-900 text-white dark:border-white dark:text-white  "
-                : "text-gray-900 "
-            }`}
+                : "text-gray-900 "}`}
             onClick={() => payWayChange(0, 1)}
           >
             {usePayWay[0].name}
           </button>
           <button
             type="button"
-            className={`px-4 py-2 text-sm font-medium border-y border-r border-gray-900 rounded-e-lg ${
-              usePayWay[1].isActive
+            className={`px-4 py-2 text-sm font-medium border-y border-r border-gray-900 rounded-e-lg ${usePayWay[1].isActive
                 ? "bg-gray-900 text-white dark:border-white dark:text-white  "
-                : "text-gray-900 "
-            }`}
+                : "text-gray-900 "}`}
             onClick={() => payWayChange(1, 0)}
           >
             {usePayWay[1].name}
@@ -159,13 +156,11 @@ export default function About(props) {
                 placeholder="충전금액을 선택해 주세요"
                 value={`${amt.name}원`}
                 readOnly
-                className="bg-transparent appearance-none text-xl h-8 font-semibold outline-0 min-[600px]:ml-4 flex-auto"
-              />
+                className="bg-transparent appearance-none text-xl h-8 font-semibold outline-0 min-[600px]:ml-4 flex-auto" />
               <MdCancel
                 size={24}
                 className="my-auto cursor-pointer flex-auto"
-                onClick={() => setAmt({ name: "0", amt: 0 })}
-              />
+                onClick={() => setAmt({ name: "0", amt: 0 })} />
             </div>
           </div>
           <div className="grid min-[600px]:grid-cols-5 max-[600px]: grid-cols-3 gap-x-2 gap-y-3 mt-5">
@@ -180,33 +175,6 @@ export default function About(props) {
             ))}
           </div>
         </div>
-        {/* <Accordion className="px-0">
-          <AccordionItem
-            aria-label="환불 정책"
-            title={<span className="text-foreground text-sm">환불정책</span>}
-            className="text-sm"
-          >
-            <div>
-              ■ 무통장입금 또는 신용카드로 결제된 충전금에 한해서 환불됩니다.
-              <br />
-              ■ 사용 내역이 없는 결제 건에 대해서만 전액 환불이 가능합니다.
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;(단, 결제 후 10일 이내 사용 이력이 없는
-              경우에만 전액 환불 가능합니다)
-              <br />
-              ■ 사용 내역이 있는 결제 건에 대해서는 기획재정부에서 고시한
-              &lt;인터넷이용관련 소비자피해보상&gt;에따라 위약금 (최종 결제
-              요금의 10%) 및 PG수수료(무통장입금 200원 / 신용카드 결제 금액의
-              2.35%) 공제 후 환불됩니다. 단, 남은 금액이 공제 금액보다 작은
-              경우에는 환불이 불가합니다.
-              <br />
-              ■ 아래의 경우 충전금은 환불되지 않습니다.
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 충전금 잔액이1,000원 미만인
-              경우
-            </div>
-          </AccordionItem>
-        </Accordion> */}
         <p className="text-sm font-normal leading-8">
           결제가 안되시나요?{" "}
           <a href="#" className="underline text-[#4b70fd]">
@@ -252,28 +220,7 @@ export default function About(props) {
         </div>
         <div className="flex-1"></div>
       </div>
-
-      {/* <div className=" pt-4 grid grid-cols-3 gap-x-4 gap-y-4 mb-4">
-        {payAmt?.map((value, i) => (
-          <button
-            key={value.amt}
-            className={`${
-              value.click ? "bg-blue-500" : "bg-white"
-            } text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow `}
-            onClick={() => onclick(i)}
-          >
-            {value.amt}
-          </button>
-        ))}
-      </div> */}
-
-      {/* <button
-        onClick={serverAuth}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        충전하기
-      </button> */}
-    </div>
+    </div><Footer /></>
   );
 //     const merchantKey =
 //       "EYzu8jGGMfqaDEp76gSckuvnaHHu+bC4opsSN6lHv3b2lurNYkVXrZ7Z1AoqQnXI3eLuaUFyoRNC6FkrzVjceg==";

@@ -57,8 +57,13 @@ export default function Home() {
         <div className="flex justify-center mb-4">알림톡 관리 페이지</div>
         <Card className="py-4 shadow-md mb-4">
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-            <h4 className="font-bold text-large">현재 남은 금액</h4>
-            <span className="text-xl font-semibold flex">{session?.user.amount}<p>원</p></span>
+            <div className="flex w-full justify-between">
+              <h4 className="font-bold text-large">현재 남은 금액</h4>
+              <span className="text-xl font-semibold flex">
+                {session?.user.amount}
+                <p>원</p>
+              </span>
+            </div>
           </CardHeader>
           <CardBody className="overflow-visible py-2"></CardBody>
         </Card>

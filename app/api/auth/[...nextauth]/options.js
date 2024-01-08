@@ -17,11 +17,14 @@ export const options = {
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-
+        console.log(JSON.stringify(credentials));
         const res = await fetch("http://localhost:3000/api/apiauthcheck", {
           method: "POST",
           body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
         });
         // const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
         const user = await res.json();
@@ -53,5 +56,5 @@ export const options = {
   pages: {
     signIn: "/login",
   },
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
 };
