@@ -23,7 +23,7 @@ export default function Home() {
     async load({ signal }) {
       let res = await fetch("/api/monthLog", {
         method: "POST",
-        body: JSON.stringify({ ...props.params, selectDate }),
+        headers: { "Content-Type": "application/json" },
         signal,
       });
       let json = await res.json();
