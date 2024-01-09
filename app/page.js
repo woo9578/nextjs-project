@@ -22,6 +22,8 @@ export default function Home() {
   let list = useAsyncList({
     async load({ signal }) {
       let res = await fetch("/api/monthLog", {
+        method: "POST",
+        body: JSON.stringify({ ...props.params, selectDate }),
         signal,
       });
       let json = await res.json();

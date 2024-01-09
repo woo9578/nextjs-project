@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import { options } from "../auth/[...nextauth]/options";
 import DateFormat from "@/common/DateFormat";
 
-export async function GET(req){
+export async function POST(req){
     try{
         const session = await getServerSession(options);
         const month = DateFormat.substring(0,7);
