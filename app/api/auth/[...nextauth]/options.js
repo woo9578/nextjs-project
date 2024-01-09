@@ -17,7 +17,6 @@ export const options = {
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        console.log(JSON.stringify(credentials));
         const res = await fetch("http://localhost:3000/api/apiauthcheck", {
           method: "POST",
           body: JSON.stringify(credentials),

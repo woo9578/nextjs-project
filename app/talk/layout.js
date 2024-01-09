@@ -3,10 +3,10 @@ import { getServerSession } from "next-auth";
 import { useSelectedLayoutSegment, redirect } from "next/navigation";
 
 export default async function LogLayout({ children }) {
-    const session = await getServerSession();
-    if(!session){
-        redirect("/login");
-    }
+    // const session = await getServerSession();
+    // if(!session){
+    //     redirect("/login");
+    // }
 
     return (
       <>
