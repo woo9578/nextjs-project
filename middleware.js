@@ -43,6 +43,6 @@ export const config = {
     "/talk/payLog",
     "/talk/useLog",
     "/",
-    "/((?!api|_next/static|_next/image|favicon.ico|.png).*)",
+    "/((?!api|_next/static|_next/image|.*\\.png$).*)",
   ],
 };

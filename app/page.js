@@ -7,6 +7,7 @@ import { Card, CardHeader, CardBody, Divider,Spinner } from "@nextui-org/react";
 import useSWR from "swr";
 import { useEffect, useState } from "react";
 import { useAsyncList } from "@react-stately/data";
+import CompanyFooter from "@/components/CompanyFooter";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -123,6 +124,7 @@ export default function Home() {
             )}
           </CardBody>
         </Card>
+        <CompanyFooter />
       </div>
     </>
   );
