@@ -22,8 +22,7 @@ export default function CompanyFooter() {
           사업자 등록번호 : 402-86-09481 | 메일 : qna@smartcast.co.kr
         </div>
         <div className="text-base">
-          대표번호 : 1877-1286 | 고객센터 : 1522-0201 | 오더잇상담센터 :
-          1877-1285 | FAX : 031-909-5523
+          대표번호 : 1877-1286 | 고객센터 : 1522-0201 | FAX : 031-909-5523
         </div>
       </main>
     </footer>
